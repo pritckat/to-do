@@ -1,20 +1,32 @@
-<h1>A List of Things To Do</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>A List of Things To Do</h1>
 
-<form action="/items" method="POST">
-    <input type="text" placeholder="to-do" name="item">
-    <input type="submit">
-</form>
-
-<container class="todoList">
-    <h2>To Do!</h2>
-    <ul>
-        <% for(let i=0; i < info.length; i++) {%>
-            <li class="itemList">
-                <span><input type="checkbox"></span>
-                <span><%= info[i].item %></span>
-                <button>edit</button>
-                <button class=deleteItem>delete</button>
-            </li>
-        <% } %>
-    </ul>
-</container>
+    <form action="/items" method="POST">
+        <input type="text" placeholder="to-do" name="item">
+        <input type="submit">
+    </form>
+    
+    <container class="todoList">
+        <h2>To Do!</h2>
+        <ul>
+            <% for(let i=0; i < info.length; i++) {%>
+                <li class="itemList">
+                    <span><input type="checkbox"></span>
+                    <span><%= info[i].item %></span>
+                    <button>edit</button>
+                    <button class=deleteItem>delete</button>
+                </li>
+            <% } %>
+        </ul>
+    </container>   
+</body>
+<script src="js/main.js"></script>
+</html>

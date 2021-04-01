@@ -33,5 +33,14 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
           })
          .catch(error => console.error(error))
       })
+
+    .delete('/deleteItem', (req, res) => {
+      itemCollection.deleteOne({item: req.body.item})
+      .then(result => {
+          console.log('Item Deleted')
+          res.json('Item Deleted')
+      })
+      .catch(error => console.error(error))
+    })
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
   })
