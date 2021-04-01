@@ -1,11 +1,13 @@
+require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 const MongoClient = require('mongodb')
-const connectionString = require('./secrets.js')
+//const connectionString = require('./secrets.js')
 
 
-MongoClient.connect(connectionString, { useUnifiedTopology: true })
+
+MongoClient.connect(process.env.DB_CONNECT, { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to Database')
     const db = client.db('to-do')
