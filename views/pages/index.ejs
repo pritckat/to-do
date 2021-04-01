@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -20,9 +21,11 @@
             <% for(let i=0; i < info.length; i++) {%>
                 <li class="itemList">
                     <span><input type="checkbox"></span>
-                    <span><%= info[i].item %></span>
-                    <button>edit</button>
-                    <button class=deleteItem>delete</button>
+                    <span class="itemName"><%= info[i].item %></span>
+                    <button class="editItem">edit</button>
+                    <input type="text" class="updateItemText hidden">
+                    <button class="updateItem hidden">Update</button>
+                    <button class="deleteItem">delete</button>
                 </li>
             <% } %>
         </ul>

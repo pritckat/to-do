@@ -42,5 +42,22 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       })
       .catch(error => console.error(error))
     })
+
+    .put('/updateItem', (req, res) => {
+      itemCollection.findOneAndUpdate({item: req.body.item},
+        {
+          $set: {
+            item: req.body.update
+          }
+        },
+        {
+          upsert: true
+        })
+        .then(result => {
+          console.log('Item Updated')
+          res.json('Item Updated')
+        })
+        .catch(err => console.log(err))
+    })
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
   })
