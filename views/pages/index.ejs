@@ -20,7 +20,7 @@
         <ul>
             <% for(let i=0; i < info.length; i++) {%>
                 <li class="itemList">
-                    <span><input type="checkbox" <%= info[i].done ? "checked" : "" %>></span>
+                    <span><input class="check" type="checkbox" <%= info[i].done ? "checked" : "" %>></span>
                     <span class="itemName"><%= info[i].item %></span>
                     <button class="editItem">edit</button>
                     <input type="text" class="updateItemText hidden">

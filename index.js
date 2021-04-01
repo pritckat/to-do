@@ -26,7 +26,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
     .post('/items', (req, res) => {
         console.log('post request')
-        itemCollection.insertOne({item: req.body.item, done: true} )
+        itemCollection.insertOne({item: req.body.item, done: false} )
           .then(result => {
             console.log(req.body.item)
             console.log('redirect')
@@ -60,5 +60,23 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         })
         .catch(err => console.log(err))
     })
+
+    .put('/checkBox', (req, res) => {
+      itemCollection.findOneAndUpdate({item: req.body.item},
+        {
+          $set: {
+            done: req.body.done
+          }
+        },
+        {
+          upsert: true
+        })
+        .then(result => {
+          console.log('Item Done')
+          res.json('Item Done')
+        })
+        .catch(err => console.log(err))
+    })
+
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
   })

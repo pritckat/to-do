@@ -1,6 +1,7 @@
 const deleteItems = document.querySelectorAll('.deleteItem')
 const updateItems = document.querySelectorAll('.updateItem')
 const editItems = document.querySelectorAll('.editItem')
+const checkboxes = document.querySelectorAll('.check')
 
 Array.from(deleteItems).forEach(e => {
     e.addEventListener('click', deleteItem)
@@ -12,6 +13,10 @@ Array.from(updateItems).forEach(e => {
 
 Array.from(editItems).forEach(e=> {
     e.addEventListener('click', editItem)
+})
+
+Array.from(checkboxes).forEach(e => {
+    e.addEventListener('click', checkBox)
 })
 
 
@@ -63,4 +68,23 @@ async function updateItem() {
     }catch(err){
         console.log(err)
     }
+}
+
+async function checkBox() {
+    const item = this.parentNode.parentNode.childNodes[3].innerText
+    let checked = this.checked
+    console.log(this.checked)
+    try{
+        const response = await fetch('checkBox', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                'item': item,
+                'done': checked
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    } catch(err) {console.log(err)}
 }
