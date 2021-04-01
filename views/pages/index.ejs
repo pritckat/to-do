@@ -1,1 +1,20 @@
-<h1>Hellow World</h1>
+<h1>A List of Things To Do</h1>
+
+<form action="/items" method="POST">
+    <input type="text" placeholder="to-do" name="item">
+    <input type="submit">
+</form>
+
+<container class="todoList">
+    <h2>To Do!</h2>
+    <ul>
+        <% for(let i=0; i < info.length; i++) {%>
+            <li class="itemList">
+                <span><input type="checkbox"></span>
+                <span><%= info[i].item %></span>
+                <button>edit</button>
+                <button class=deleteItem>delete</button>
+            </li>
+        <% } %>
+    </ul>
+</container>
