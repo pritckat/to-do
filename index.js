@@ -25,7 +25,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     })
 
     .post('/items', (req, res) => {
-        console.log('post request')
         itemCollection.insertOne({item: req.body.item, done: false} )
           .then(result => {
             console.log(req.body.item)
