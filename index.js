@@ -23,9 +23,10 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         res.render('pages/index', {info: data})
       })
     })
+
     .post('/items', (req, res) => {
         console.log('post request')
-        itemCollection.insertOne(req.body)
+        itemCollection.insertOne({item: req.body.item, done: true} )
           .then(result => {
             console.log(req.body.item)
             console.log('redirect')

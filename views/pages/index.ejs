@@ -11,7 +11,7 @@
     <h1>A List of Things To Do</h1>
 
     <form action="/items" method="POST">
-        <input type="text" placeholder="to-do" name="item">
+        <input type="text" placeholder="add to list" name="item">
         <input type="submit">
     </form>
     
@@ -20,7 +20,7 @@
         <ul>
             <% for(let i=0; i < info.length; i++) {%>
                 <li class="itemList">
-                    <span><input type="checkbox"></span>
+                    <span><input type="checkbox" <%= info[i].done ? "checked" : "" %>></span>
                     <span class="itemName"><%= info[i].item %></span>
                     <button class="editItem">edit</button>
                     <input type="text" class="updateItemText hidden">
